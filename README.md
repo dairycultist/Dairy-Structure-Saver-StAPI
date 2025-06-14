@@ -18,8 +18,8 @@ classes:
 - **LocalRotationPlacer** (extends Placer)
   - Must instance with a world, random, position, width/height/length, and direction enum
   - Utilities handle position and rotation automatically
-- **StructurePlacer** (extends Placer)
-  - After instancing, you can .addRoom(Room room) and then .place(int startX, int startY, int startZ, int maxDepth)
+- **StructureFeature** (extends Feature)
+  - Must instance with an initial room, a maxDepth (for room branching), a boolean for whether to place the first room on the surface or underground, and a chance (random(x) == 0)
 - **BlockWrapper** (interface)
   - Contains one function: getBlock(int x, int y, int z, int prevBlock)
 
