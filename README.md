@@ -6,7 +6,8 @@ classes:
 - **Room** (abstract)
   - Must instance with a width/height/length bounding box for placement collision
   - Must instance with the position/direction of every door
-  - Must override a build(Random random, LocalRotationPlacer placer) function
+  - Must override `build(Random random, LocalRotationPlacer placer)`
+  - Must override `getNextRoom(int door, Random random)`
 - **Placer** (abstract)
   - Has three basic utilities: placeBlock, fillRect, and hollowRect
     - The rect utilities are implemented by using placeBlock; Only placeBlock must be implemented when extended (for every overloading!)
