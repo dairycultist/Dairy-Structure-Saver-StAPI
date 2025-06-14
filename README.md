@@ -3,11 +3,23 @@
 helper mod for making structures that don't collide in stapi
 
 classes:
-- Room (abstract, must instance with a width/height/length bounding box for placement collision & position/direction of every door, and override a build() function that is passed a LocalRotationPlacer)
-- StructurePlacer (after instancing, you can .addRoom and then .place by providing a position and a maximum depth)
-- Placer (abstract, has three basic utilities: placeBlock, fillRect, and hollowRect)
-- GlobalPlacer (must instance with a world and random)
-- LocalRotationPlacer (must instance with a world, random, position, width/height/length, and direction enum, provides useful utilities that handle position and rotation automatically)
+- **Room** (abstract)
+  - Must instance with a width/height/length bounding box for placement collision
+  - Must instance with the position/direction of every door
+  - Must override a build(Random random, LocalRotationPlacer placer) function
+- **Placer** (abstract)
+  - Has three basic utilities: placeBlock, fillRect, and hollowRect
+  - Each utility is overloaded so that it may optionally take meta OR a BlockWrapper
+- **GlobalPlacer** (extends Placer)
+  - Must instance with a world and random
+  - Has expected behaviour for placing in global space
+- **LocalRotationPlacer** (extends Placer)
+  - Must instance with a world, random, position, width/height/length, and direction enum
+  - Utilities handle position and rotation automatically
+- **StructurePlacer**
+  - After instancing, you can .addRoom(Room room) and then .place(int startX, int startY, int startZ, int maxDepth)
+- **BlockWrapper** (interface)
+  - Contains one function: getBlock(int x, int y, int z, int prevBlock)
 
 ```
 import net.minecraft.block.Block;
