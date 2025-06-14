@@ -9,7 +9,8 @@ classes:
   - Must override a build(Random random, LocalRotationPlacer placer) function
 - **Placer** (abstract)
   - Has three basic utilities: placeBlock, fillRect, and hollowRect
-  - Each utility is overloaded so it either takes (int blockId), (int blockId, int meta), or (BlockWrapper block) -- the first two are implemented by using the abstract third
+  - Each utility is overloaded so it either takes `(int blockId)`, `(int blockId, int meta)`, or `(BlockWrapper block)`
+    - The first two are implemented by using the abstract third; Only the third must be implemented when extended
 - **GlobalPlacer** (extends Placer)
   - Must instance with a world and random
   - Has expected behaviour for placing in global space
