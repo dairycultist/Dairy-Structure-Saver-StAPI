@@ -1,6 +1,6 @@
 # StAPI-Structure-Utility
 
-helper mod for making structures that don't collide in stapi
+helper mod for making structures (esp ones that don't collide) in StAPI
 
 classes:
 - **Room** (abstract)
@@ -16,7 +16,7 @@ classes:
 - **LocalRotationPlacer** (extends Placer)
   - Must instance with a world, random, position, width/height/length, and direction enum
   - Utilities handle position and rotation automatically
-- **StructurePlacer**
+- **StructurePlacer** (extends Placer)
   - After instancing, you can .addRoom(Room room) and then .place(int startX, int startY, int startZ, int maxDepth)
 - **BlockWrapper** (interface)
   - Contains one function: getBlock(int x, int y, int z, int prevBlock)
