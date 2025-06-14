@@ -1,5 +1,9 @@
 # StAPI-Structure-Utility
 
+helper mod for making structures that don't collide in stapi
+
+each room has a Builder (lambda function) that is passed a Placer (middleman to placing blocks in the World that handles rotation automatically)
+
 ```
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.ChestBlockEntity;
