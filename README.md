@@ -6,18 +6,18 @@ classes:
 - **Room** (abstract)
   - Must instance with a width/height/length bounding box for placement collision
   - Must instance with the position/direction of every door
-  - Must override `build(Random random, LocalRotationPlacer placer)`
+  - Must override `build(Random random, LocalWithRotationPlacer placer)`
   - Must override `getNextRoom(int door, Random random)`
 - **StructureFeature** (extends Feature)
   - Must instance with an initial room, a maxDepth (for recursive room placement), a boolean for whether to place the first room on the surface or underground, and a chance (random(x) == 0)
 - **Placer** (abstract)
-  - Has three basic utilities: placeBlock, fillRect, and hollowRect
-    - The rect utilities are implemented by using placeBlock; Only placeBlock must be implemented when extended (for every overloading!)
+  - Has three basic utilities: `placeBlock(...)`, `fillRect(...)`, and `hollowRect(...)`
+    - The rect utilities are implemented by using `placeBlock`; Only `placeBlock` must be implemented when extended (for every overloading!)
   - Each utility is overloaded so it either takes `(int blockId)`, `(int blockId, int meta)`, or `(BlockWrapper block)`
 - **GlobalPlacer** (extends Placer)
   - Must instance with a world and random
   - Has expected behaviour for placing in global space
-- **LocalRotationPlacer** (extends Placer)
+- **LocalWithRotationPlacer** (extends Placer)
   - Must instance with a world, random, position, width/height/length, and direction enum
   - Utilities handle position and rotation automatically
 - **BlockWrapper** (interface)
