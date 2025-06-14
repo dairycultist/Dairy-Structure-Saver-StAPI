@@ -2,7 +2,12 @@
 
 helper mod for making structures that don't collide in stapi
 
-each room has a Builder (lambda function) that is passed a Placer (middleman to placing blocks in the World that handles rotation automatically)
+classes:
+- Room (abstract, must instance with a width/height/length bounding box for placement collision & position/direction of every door, and override a build() function that is passed a LocalRotationPlacer)
+- StructurePlacer (after instancing, you can .addRoom and then .place by providing a position and a maximum depth)
+- Placer (abstract, has three basic utilities: placeBlock, fillRect, and hollowRect)
+- GlobalPlacer (must instance with a world and random)
+- LocalRotationPlacer (must instance with a world, random, position, width/height/length, and direction enum, provides useful utilities that handle position and rotation automatically)
 
 ```
 import net.minecraft.block.Block;
