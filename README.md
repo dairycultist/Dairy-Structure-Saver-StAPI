@@ -1,8 +1,13 @@
-# StAPI-Structure-Utility
+# Lactose Utility \[StAPI]
 
-helper mod for making structures (esp ones that don't collide) in StAPI
+a utility mod for some of my more complex StAPI mods
 
-classes:
+## Mobs
+
+## Structures
+
+helper classes for making structures (esp ones that don't collide) in StAPI
+
 - **Room** (abstract)
   - Must instance with a width/height/length bounding box for placement collision
   - Must instance with the position/direction of every door
