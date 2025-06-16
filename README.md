@@ -1,6 +1,6 @@
 # Lactose Utility \[StAPI]
 
-a utility mod for some of my more complex StAPI mods
+A utility mod for some of my more complex StAPI mods. See the [wiki](https://github.com/dairycultist/Lactose-Utility-StAPI/wiki) for information on how to use it.
 
 ```
 import net.minecraft.block.Block;
