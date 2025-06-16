@@ -14,7 +14,7 @@ helper classes for making structures (esp ones that don't collide) in StAPI
   - Must override `build(Random random, LocalWithRotationPlacer placer)`
   - Must override `getNextRoom(int door, Random random)`
 - **StructureFeature** (extends Feature)
-  - Must instance with an initial room, a maxDepth (for recursive room placement), a boolean for whether to place the first room on the surface or underground, and a chance (random(x) == 0)
+  - Must instance with an initial room, a maxDepth (for recursive room placement), a vertical offset for the initial room placement, a boolean for whether the vertical offset is based on the surface or the bottom of the world, and a chance (random(x) == 0)
 - **Placer** (abstract)
   - Has three basic utilities: `placeBlock(...)`, `fillRect(...)`, and `hollowRect(...)`
     - The rect utilities are implemented by using `placeBlock`; Only `placeBlock` must be implemented when extended (for every overloading!)
