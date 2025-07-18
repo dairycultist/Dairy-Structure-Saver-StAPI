@@ -8,6 +8,6 @@ Build a structure ingame, save it to a file, and place that structure through co
 
 `/savecopied house`
 
-`DairyStructureSaver.placeStructure(0, 0, 0, "house.dss");`
+`new Structure("house.dss").place(0, 0, 0);`
 
 `.dss` stands for Dairy Saved Structure :D
