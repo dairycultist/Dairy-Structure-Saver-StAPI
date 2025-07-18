@@ -1,6 +1,6 @@
 # Lactose Utility \[StAPI]
 
-A utility mod for some of my more complex StAPI mods.
+A static utility mod for streamlining feature generation.
 
 ```
 Lactose.world = world;
