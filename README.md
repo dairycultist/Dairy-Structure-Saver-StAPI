@@ -1,6 +1,17 @@
 # Lactose Utility \[StAPI]
 
-A utility mod for some of my more complex StAPI mods. See the [wiki](https://github.com/dairycultist/Lactose-Utility-StAPI/wiki) for information on how to use it.
+A utility mod for some of my more complex StAPI mods.
+
+```
+Lactose.world = world;
+Lactose.localX = 5;
+Lactose.localY = 64;
+Lactose.localZ = 20;
+
+Lactose.rotationAroundLocal = Lactose.NO_ROTATION;
+
+Lactose.fillRect(0, 0, 0, 10, 10, 10, blockId);
+```
 
 ```
 import net.minecraft.block.Block;
