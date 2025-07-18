@@ -10,7 +10,7 @@ Build a structure ingame, save it to a file, and place that structure through co
 
 `/structure save house`
 
-`new Structure("house.dss").place(0, 0, 0, DairyStructureSaver.NO_ROTATION);`
+`new Structure("house.dss").place(0, 0, 0, Structure.NO_ROTATION);`
 
 `NO_ROTATION` `CW_0` `CW_90` `CW_180` `CW_270` (first two are the same)
 
