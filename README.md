@@ -7,12 +7,12 @@ Lactose.reset();
 
 Lactose.world = world;
 Lactose.localX = 5;
-Lactose.localY = 64;
 Lactose.localZ = 20;
+Lactose.localY = Lactose.getLowestGlobalYWithin(0, 0, 10, 10);
 
 Lactose.rotationAroundLocal = Lactose.NO_ROTATION;
 
-Lactose.fillRect(0, Lactose.getBottomLocalYWithin(0, 0, 10, 10), 0, 10, 10, 10, blockId);
+Lactose.fillRect(0, 0, 0, 10, 10, 10, blockId);
 ```
 
 ```
