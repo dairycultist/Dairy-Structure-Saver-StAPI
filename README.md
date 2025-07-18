@@ -2,18 +2,9 @@
 
 A static utility mod for streamlining feature generation.
 
-```
-Lactose.reset();
-
-Lactose.world = world;
-Lactose.localX = 5;
-Lactose.localZ = 20;
-Lactose.localY = Lactose.getLowestGlobalYWithin(0, 0, 10, 10);
-
-Lactose.rotationAroundLocal = Lactose.NO_ROTATION;
-
-Lactose.fillRect(0, 0, 0, 10, 10, 10, blockId);
-```
+`/copy ~ ~ ~ 10 10 10`
+`/paste ~ ~ ~`
+`/savecopied house`
 
 ```
 public class Lactose {
@@ -32,7 +23,5 @@ public class Lactose {
 
         return chest;
     }
-
-    // steal code from megaliths mod u were working on
 }
 ```
