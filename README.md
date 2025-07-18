@@ -2,11 +2,13 @@
 
 Build a structure ingame, save it to a file, and place that structure through code!
 
-`/copy ~ ~ ~ 10 10 10`
+`/structure corner 1`
 
-`/paste ~ ~ ~`
+`/structure corner 2`
 
-`/savecopied house`
+`/structure paste ~ ~ ~`
+
+`/structure save house`
 
 `new Structure("house.dss").place(0, 0, 0);`
 
