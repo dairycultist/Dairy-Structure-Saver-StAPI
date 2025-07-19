@@ -5,15 +5,14 @@ import com.matthewperiut.retrocommands.api.CommandRegistry;
 import com.matthewperiut.retrocommands.util.SharedCommandSource;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.Block;
-import net.minecraft.world.LightType;
+import net.minecraft.world.World;
 
 public class DairyStructureSaver implements ModInitializer {
 
     public static int x1, y1, z1;
     public static int x2, y2, z2;
-    public static boolean corner1Valid = false;
-    public static boolean corner2Valid = false;
+    public static boolean corner1Set = false;
+    public static boolean corner2Set = false;
 
     public void onInitialize() {
 
@@ -41,43 +40,26 @@ public class DairyStructureSaver implements ModInitializer {
 
                                 case "1":
 
-                                    x1 = (int) sharedCommandSource.getPlayer().x;
-                                    y1 = (int) sharedCommandSource.getPlayer().y - 2;
-                                    z1 = (int) sharedCommandSource.getPlayer().z;
-                                    sharedCommandSource.sendFeedback("Set corner 1 to " + x1 + "," + y1 + "," + z1 + " (inclusive)");
-                                    sharedCommandSource.sendFeedback("(AKA the position of the block you were standing on)");
-                                    corner1Valid = true;
+                                    sharedCommandSource.sendFeedback(
+                                        setCorner1(
+                                            sharedCommandSource.getPlayer().world,
+                                            (int) sharedCommandSource.getPlayer().x,
+                                            (int) sharedCommandSource.getPlayer().y - 2,
+                                            (int) sharedCommandSource.getPlayer().z
+                                        )
+                                    );
                                     break;
 
                                 case "2":
 
-                                    if (!corner1Valid) {
-                                        sharedCommandSource.sendFeedback("Set corner 1 first!");
-                                        break;
-                                    }
-
-                                    x2 = (int) sharedCommandSource.getPlayer().x;
-                                    y2 = (int) sharedCommandSource.getPlayer().y - 2;
-                                    z2 = (int) sharedCommandSource.getPlayer().z;
-
-                                    if (x2 < x1 || y2 < y1 || z2 < z1) {
-                                        sharedCommandSource.sendFeedback("Corner 2 must be greater (or equal to) than corner 1 on all three axes!");
-                                        break;
-                                    }
-
-                                    sharedCommandSource.sendFeedback("Set corner 2 to " + x2 + "," + y2 + "," + z2 + " (inclusive)");
-                                    sharedCommandSource.sendFeedback("(AKA the position of the block you were standing on)");
-                                    x2++;
-                                    y2++;
-                                    z2++;
-
-                                    // update blocks so that they appear highlighted
-                                    for (int x = x1; x < x2; x++)
-                                        for (int y = y1; y < y2; y++)
-                                            for (int z = z1; z < z2; z++)
-                                                sharedCommandSource.getPlayer().world.blockUpdateEvent(x, y, z);
-
-                                    corner2Valid = true;
+                                    sharedCommandSource.sendFeedback(
+                                        setCorner2(
+                                            sharedCommandSource.getPlayer().world,
+                                            (int) sharedCommandSource.getPlayer().x,
+                                            (int) sharedCommandSource.getPlayer().y - 2,
+                                            (int) sharedCommandSource.getPlayer().z
+                                        )
+                                    );
                                     break;
 
                                 default:
@@ -173,5 +155,64 @@ public class DairyStructureSaver implements ModInitializer {
             return local;
 
         return Integer.parseInt(str);
+    }
+
+    private static String setCorner1(World world, int x, int y, int z) {
+
+        if (corner2Set && (x > x2 || y > y2 || z > z2))
+            return "Corner 1 must be lesser than (or equal to) corner 2 on all three axes!";
+
+        updateHighlightedBlocks(world, true);
+
+        x1 = x;
+        y1 = y;
+        z1 = z;
+        corner1Set = true;
+
+        updateHighlightedBlocks(world, false);
+
+        return "Set corner 1 to " + x1 + "," + y1 + "," + z1 + " (inclusive) (AKA the position of the block you were standing on)";
+    }
+
+    private static String setCorner2(World world, int x, int y, int z) {
+
+        if (!corner1Set)
+            return "Set corner 1 first!";
+
+        if (x < x1 || y < y1 || z < z1)
+            return "Corner 2 must be greater than (or equal to) corner 1 on all three axes!";
+
+        updateHighlightedBlocks(world, true);
+
+        x2 = x + 1;
+        y2 = y + 1;
+        z2 = z + 1;
+        corner2Set = true;
+
+        updateHighlightedBlocks(world, false);
+
+        return "Set corner 2 to " + (x2-1) + "," + (y2-1) + "," + (z2-1) + " (inclusive) (AKA the position of the block you were standing on)";
+    }
+
+    private static void updateHighlightedBlocks(World world, boolean clear) {
+
+        int holdX2 = x2;
+        int holdY2 = y2;
+        int holdZ2 = z2;
+
+        if (clear) {
+            x2 = x1 - 1;
+            y2 = y1 - 1;
+            z2 = z1 - 1;
+        }
+
+        for (int x = x1; x < holdX2; x++)
+            for (int y = y1; y < holdY2; y++)
+                for (int z = z1; z < holdZ2; z++)
+                    world.blockUpdateEvent(x, y, z);
+
+        x2 = holdX2;
+        y2 = holdY2;
+        z2 = holdZ2;
     }
 }

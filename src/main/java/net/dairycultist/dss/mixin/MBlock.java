@@ -5,13 +5,14 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.block.GrassBlock;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({Block.class, GrassBlock.class})
+@Mixin({ Block.class, GrassBlock.class, LeavesBlock.class })
 public class MBlock {
 
     @Inject(method = "getColorMultiplier", at = @At(value = "HEAD"), cancellable = true)
