@@ -14,12 +14,10 @@
 
   "environment": "*",
   "entrypoints": {
-    "stationapi:event_bus": [
-    ],
-    "stationapi:event_bus_client": [
-    ],
-    "stationapi:event_bus_server": [
-    ]
+    "stationapi:event_bus": [],
+    "stationapi:event_bus_client": [],
+    "stationapi:event_bus_server": [],
+    "main": [ "net.dairycultist.dss.DairyStructureSaver" ]
   },
   "mixins": [
     "dss.mixins.json"
