@@ -20,8 +20,8 @@ public class MBlock {
 
         if (
                 x >= DairyStructureSaver.x1 && x < DairyStructureSaver.x2 &&
-                y >= DairyStructureSaver.y1 && x < DairyStructureSaver.y2 &&
-                z >= DairyStructureSaver.z1 && x < DairyStructureSaver.z2
+                y >= DairyStructureSaver.y1 && y < DairyStructureSaver.y2 &&
+                z >= DairyStructureSaver.z1 && z < DairyStructureSaver.z2
         )
             cir.setReturnValue(16776960);
     }
