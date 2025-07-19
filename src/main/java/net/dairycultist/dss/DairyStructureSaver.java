@@ -82,7 +82,7 @@ public class DairyStructureSaver implements ModInitializer {
                             }
 
                             int posX = getBlockPos(strings[2], (int) sharedCommandSource.getPlayer().x);
-                            int posY = getBlockPos(strings[3], (int) sharedCommandSource.getPlayer().y);
+                            int posY = getBlockPos(strings[3], (int) sharedCommandSource.getPlayer().y - 2);
                             int posZ = getBlockPos(strings[4], (int) sharedCommandSource.getPlayer().z);
 
                             // check to make sure there isn't overlap
