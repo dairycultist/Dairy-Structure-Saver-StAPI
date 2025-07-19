@@ -4,6 +4,7 @@
   "package": "net.dairycultist.dss.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MBlock"
   ],
   "server": [
   ],

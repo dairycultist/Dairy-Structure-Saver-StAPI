@@ -6,6 +6,7 @@ import com.matthewperiut.retrocommands.util.SharedCommandSource;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
+import net.minecraft.world.LightType;
 
 public class DairyStructureSaver implements ModInitializer {
 
@@ -69,6 +70,13 @@ public class DairyStructureSaver implements ModInitializer {
                                     x2++;
                                     y2++;
                                     z2++;
+
+                                    // update blocks so that they appear highlighted
+                                    for (int x = x1; x < x2; x++)
+                                        for (int y = y1; y < y2; y++)
+                                            for (int z = z1; z < z2; z++)
+                                                sharedCommandSource.getPlayer().world.blockUpdateEvent(x, y, z);
+
                                     corner2Valid = true;
                                     break;
 
@@ -105,13 +113,10 @@ public class DairyStructureSaver implements ModInitializer {
                                 return;
                             }
 
-                            for (int x = 0; x < x2 - x1; x++) {
-                                for (int y = 0; y < y2 - y1; y++) {
-                                    for (int z = 0; z < z2 - z1; z++) {
+                            for (int x = 0; x < x2 - x1; x++)
+                                for (int y = 0; y < y2 - y1; y++)
+                                    for (int z = 0; z < z2 - z1; z++)
                                         sharedCommandSource.getPlayer().world.setBlock(posX + x, posY + y, posZ + z, sharedCommandSource.getPlayer().world.getBlockId(x1 + x, y1 + y, z1 + z));
-                                    }
-                                }
-                            }
                             break;
 
                         // /structure save house
@@ -136,7 +141,7 @@ public class DairyStructureSaver implements ModInitializer {
                 }
 
                 public void manual(SharedCommandSource sharedCommandSource) {
-
+                    sharedCommandSource.sendFeedback("Run '/structure' to get hints on how to use the command");
                 }
             });
 
